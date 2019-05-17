@@ -209,7 +209,7 @@ class Main extends eui.UILayer {
         this.addChild(panel);
 
 
-        PromiseUtils.requestGet("http://47.95.246.80:9090/user/get").then((data)=>{
+        PromiseUtils.requestGet("http://47.95.246.80:9091/user/get").then((data)=>{
             console.log("Request data is ", data )
             panel.title = data.message;
         });

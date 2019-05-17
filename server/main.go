@@ -55,8 +55,8 @@ func main() {
 
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello World")
+		c.String(http.StatusOK, "fuck u ")
 	})
 	router.GET("/user/get", getUser)
-	router.Run(":9090")
+	router.Run(":9091")
 }
