@@ -1,0 +1,12 @@
+{
+    "16ada655f0c": {
+        "path": "view/StartView.ts",
+        "class": "StartView",
+        "parentPath": ""
+    },
+    "16ada6e4194": {
+        "path": "view/ResultView.ts",
+        "class": "ResultView",
+        "parentPath": ""
+    }
+}

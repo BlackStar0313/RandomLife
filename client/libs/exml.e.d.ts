@@ -30,9 +30,13 @@ declare module skins{
 	class RadioButtonSkin extends eui.Skin{
 	}
 }
+declare class ResultViewSkin extends eui.Skin{
+}
 declare module skins{
 	class ScrollerSkin extends eui.Skin{
 	}
+}
+declare class StartViewSkin extends eui.Skin{
 }
 declare module skins{
 	class TextInputSkin extends eui.Skin{
