@@ -3,7 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -44,6 +46,23 @@ func getUser(c *gin.Context) {
 	})
 }
 
+func readJson() {
+	jsonFile, err := os.Open("./Language.json")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("success open Language.json")
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+	var result map[string]interface{}
+	json.Unmarshal([]byte(byteValue), &result)
+	// fmt.Println(result
+
+	test := result["112"]
+	fmt.Printf("你这个傻屌 %s", test)
+}
+
 func main() {
 	// fmt.Println("starting server ")
 	// http.HandleFunc("/nihao", sayHelloName)
@@ -53,10 +72,12 @@ func main() {
 	// 	log.Fatal(" nima hai ", err)
 	// }
 
-	router := gin.Default()
-	router.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "fuck u ")
-	})
-	router.GET("/user/get", getUser)
-	router.Run(":9091")
+	// router := gin.Default()
+	// router.GET("/", func(c *gin.Context) {
+	// 	c.String(http.StatusOK, "fuck u ")
+	// })
+	// router.GET("/user/get", getUser)
+	// router.Run(":9091")
+
+	readJson()
 }
