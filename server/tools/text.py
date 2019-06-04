@@ -7,7 +7,7 @@ import xlrd
 from xlrd import XL_CELL_NUMBER 
 
 _excelName = "text.xlsx"
-_exportFileFolder = "./"
+_exportFileFolder = "../data/"
 
 
 

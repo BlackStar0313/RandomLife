@@ -4,5 +4,6 @@
 	<e:Group left="0" right="0" top="0" bottom="0">
 		<e:Image scaleX="1" scaleY="1" left="0" right="0" top="0" bottom="0" source="track_sb_png" scale9Grid="2,2,2,2"/>
 		<e:Label id="lbResult" text="Label" horizontalCenter="0" verticalCenter="0" textColor="0x000000" size="60"/>
+		<e:Image id="btnClose" source="on_png" x="369.36" y="974.12" anchorOffsetX="0" width="249.85" anchorOffsetY="0" height="134.58"/>
 	</e:Group>
 </e:Skin>
