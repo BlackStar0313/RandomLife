@@ -15,7 +15,7 @@ class StartView extends eui.Component implements eui.UIComponent {
 
 
     private request() {
-        PromiseUtils.requestGet("http://47.95.246.80:9091/user/getRandDesc").then((data) => {
+        PromiseUtils.requestGet("http://47.95.246.80:9091/api/getRandDesc").then((data) => {
             console.log("Request data is ", data)
             this.parent.addChild(new ResultView(data));
             // this.parent.removeChild(this);
