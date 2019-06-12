@@ -1,0 +1,25 @@
+{
+  "name": "randomlife",
+  "version": "1.0.0",
+  "description": "10%的生活是创造的，90%的生活是接纳的。 模仿旧日历，写一些逗比适宜不适宜的东西, 随机提供给玩家，每天一个可执行的任务，比如 买个苹果吃，看会中央电视台等等， 提供90%生活的内容，让生活有目标感，和体验坦然接受安排的感觉 项目主要用来练习服务器的使用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlackStar0313/RandomLife.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlackStar0313/RandomLife/issues"
+  },
+  "homepage": "https://github.com/BlackStar0313/RandomLife#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-shell": "^0.7.1"
+  }
+}
