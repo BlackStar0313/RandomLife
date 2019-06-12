@@ -51,6 +51,8 @@ class Main extends eui.UILayer {
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
+        StageUtils.startFullscreenAdaptation(640, 1136, () => {
+        });
 
         this.runGame().catch(e => {
             console.log(e);

@@ -5,7 +5,8 @@
 		"libs/modules/eui/eui.js",
 		"libs/modules/assetsmanager/assetsmanager.js",
 		"libs/modules/tween/tween.js",
-		"libs/modules/promise/promise.js"
+		"libs/modules/promise/promise.js",
+		"libs/modules/game/game.js"
 	],
 	"game": [
 		"bin-debug/AssetAdapter.js",
@@ -14,6 +15,7 @@
 		"bin-debug/MainScene.js",
 		"bin-debug/Platform.js",
 		"bin-debug/PromiseUtils.js",
+		"bin-debug/StageUtils.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/view/ResultView.js",
 		"bin-debug/view/StartView.js"

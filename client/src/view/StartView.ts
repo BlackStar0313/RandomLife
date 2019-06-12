@@ -3,6 +3,8 @@ class StartView extends eui.Component implements eui.UIComponent {
 
     public constructor() {
         super();
+        this.width = StageUtils.stageWidth;
+        this.height = StageUtils.stageHeight;
     }
 
     protected childrenCreated(): void {

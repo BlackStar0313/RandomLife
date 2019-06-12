@@ -2,8 +2,44 @@
 <e:Skin class="ResultViewSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
 	<w:Config id="16ada6e4194" ></w:Config>
 	<e:Group left="0" right="0" top="0" bottom="0">
-		<e:Image scaleX="1" scaleY="1" left="0" right="0" top="0" bottom="0" source="track_sb_png" scale9Grid="2,2,2,2"/>
-		<e:Label id="lbResult" text="Label" horizontalCenter="0" verticalCenter="0" textColor="0x000000" size="60"/>
-		<e:Image id="btnClose" source="on_png" x="369.36" y="974.12" anchorOffsetX="0" width="249.85" anchorOffsetY="0" height="134.58"/>
+		<e:Group height="200" top="0" left="0" right="0">
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xaf3d3d"/>
+			<e:Label id="lbDate" text="年月日" horizontalCenter="0" size="40" verticalCenter="-14"/>
+			<e:Image source="animals_png" y="15" left="20"/>
+			<e:Image source="animals_png" y="15" right="20" skewY="180"/>
+		</e:Group>
+		<e:Group top="199" left="160" right="160" bottom="440">
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0x334caf"/>
+			<e:Label id="lbResult" text="Label" verticalCenter="0" textColor="0x000000" size="40" y="339" scaleX="1" scaleY="1" anchorOffsetX="0" horizontalCenter="0" width="317" textAlign="center" bold="true"/>
+		</e:Group>
+		<e:Group top="199" left="0" right="480" bottom="440">
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xfc97f6"/>
+			<e:Rect height="68" anchorOffsetY="0" left="0" right="0" top="0" fillColor="0x43ad4b"/>
+			<e:Label text="宜" y="19" textColor="0xba2323" bold="true" horizontalCenter="0"/>
+			<e:Label text="Label" horizontalCenter="0" width="132" verticalCenter="-15" textAlign="center"/>
+		</e:Group>
+		<e:Group top="199" right="0" left="480" bottom="440">
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xfc97f6"/>
+			<e:Rect height="68" left="0" right="0" anchorOffsetY="0" top="0" fillColor="0x931616"/>
+			<e:Label text="不宜" y="19" horizontalCenter="0" textColor="0x53911a" bold="true"/>
+			<e:Label text="Label" horizontalCenter="0" verticalCenter="-15" width="132" textAlign="center"/>
+		</e:Group>
+		<e:Group width="639" bottom="326" height="113.66" anchorOffsetY="0" x="0" anchorOffsetX="0">
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xf7ebda"/>
+			<e:Label text="Label" textColor="0xff3f3f" verticalCenter="0" x="15"/>
+		</e:Group>
+		<e:Group width="639" bottom="212" height="113.66" anchorOffsetY="0" x="0" anchorOffsetX="0">
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xF7EBDA"/>
+			<e:Label text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
+		</e:Group>
+		<e:Group width="639" bottom="99" height="113.66" anchorOffsetY="0" x="0" anchorOffsetX="0">
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xF7EBDA"/>
+			<e:Label text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
+		</e:Group>
+		<e:Group width="639" bottom="0" height="98.99" anchorOffsetY="0" x="0" anchorOffsetX="0">
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xF7EBDA"/>
+			<e:Label text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
+		</e:Group>
+		<e:Image id="btnClose" source="on_png" x="497.36" anchorOffsetX="0" width="121.85" anchorOffsetY="0" height="65.25" bottom="20"/>
 	</e:Group>
 </e:Skin>
