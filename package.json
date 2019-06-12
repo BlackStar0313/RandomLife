@@ -16,7 +16,9 @@
     "url": "https://github.com/BlackStar0313/RandomLife/issues"
   },
   "homepage": "https://github.com/BlackStar0313/RandomLife#readme",
-  "dependencies": {},
+  "dependencies": {
+    "del": "^4.1.1"
+  },
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
