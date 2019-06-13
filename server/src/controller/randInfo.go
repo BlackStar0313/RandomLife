@@ -12,23 +12,29 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func readJson() (string, error) {
-	// jsonFile, err := os.Open("./data/lang.json")
+func readJson(fileName string) (map[string]interface{}, error) {
 	var configPath = os.Getenv("CONFIG_PATH")
-	jsonFile, err := os.Open(configPath + "/lang.json")
+	jsonFile, err := os.Open(configPath + fileName)
 	if err != nil {
 		fmt.Println(err)
-		return "", err
+		return nil, err
 	}
-	fmt.Println("success open lang.json")
+	fmt.Println("success open json")
 	defer jsonFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	var result map[string]interface{}
 	json.Unmarshal([]byte(byteValue), &result)
-	// fmt.Println(result
+	return result, nil
+}
 
-	fmt.Printf("长度是 %d \n", len(result))
+func getAdvice() (string, error) {
+	var result, err = readJson("/life.json")
+	if err != nil {
+		fmt.Println(err)
+		return "", err
+	}
+
 	length := len(result)
 	rand.Seed(time.Now().UTC().UnixNano())
 	idx := rand.Intn(length)
@@ -41,17 +47,152 @@ func readJson() (string, error) {
 	return returnValue, err
 }
 
+func getGoodBad() ([]string, error) {
+	var result, err = readJson("/goodBad.json")
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+
+	randNum := 3
+	returnValue := make([]string, randNum)
+
+	for i := 0; i < randNum; i++ {
+		length := len(result)
+		rand.Seed(time.Now().UTC().UnixNano())
+		idx := rand.Intn(length)
+		temp := result[strconv.Itoa(idx)]
+		value, isSuccess := temp.(string)
+		if isSuccess == false {
+			return nil, err
+		}
+		returnValue[i] = value
+	}
+
+	return returnValue, err
+}
+
+func getLove() int {
+	length := 5
+	rand.Seed(time.Now().UTC().UnixNano())
+	idx := rand.Intn(length)
+	return idx
+}
+
+func getSlogon() (string, error) {
+	var result, err = readJson("/slogon.json")
+	if err != nil {
+		fmt.Println(err)
+		return "", err
+	}
+
+	length := len(result)
+	rand.Seed(time.Now().UTC().UnixNano())
+	idx := rand.Intn(length)
+	value := result[strconv.Itoa(idx)]
+	returnValue, isSuccess := value.(string)
+	if isSuccess == false {
+		return "", err
+	}
+	return returnValue, err
+}
+
+func getPos() (string, error) {
+	var result, err = readJson("/pos.json")
+	if err != nil {
+		fmt.Println(err)
+		return "", err
+	}
+
+	length := len(result)
+	rand.Seed(time.Now().UTC().UnixNano())
+	idx := rand.Intn(length)
+	value := result[strconv.Itoa(idx)]
+	returnValue, isSuccess := value.(string)
+	if isSuccess == false {
+		return "", err
+	}
+	return returnValue, err
+}
+
+func getMoney() (string, error) {
+	var result, err = readJson("/money.json")
+	if err != nil {
+		fmt.Println(err)
+		return "", err
+	}
+
+	length := len(result)
+	rand.Seed(time.Now().UTC().UnixNano())
+	idx := rand.Intn(length)
+	value := result[strconv.Itoa(idx)]
+	returnValue, isSuccess := value.(string)
+	if isSuccess == false {
+		return "", err
+	}
+	return returnValue, err
+}
+
 func GetRandDesc(c *gin.Context) {
 	c.Header("Access-Control-Allow-Origin", "*")
-	advice, err := readJson()
+	advice, err := getAdvice()
 	if err != nil {
 		c.JSON(500, gin.H{
 			"success": false,
 		})
 		return
 	}
+
+	good, err := getGoodBad()
+	if err != nil {
+		c.JSON(500, gin.H{
+			"success": false,
+		})
+		return
+	}
+
+	bad, err := getGoodBad()
+	if err != nil {
+		c.JSON(500, gin.H{
+			"success": false,
+		})
+		return
+	}
+
+	loveLv := getLove()
+
+	slogon, err := getSlogon()
+	if err != nil {
+		c.JSON(500, gin.H{
+			"success": false,
+		})
+		return
+	}
+
+	pos, err := getPos()
+	if err != nil {
+		c.JSON(500, gin.H{
+			"success": false,
+		})
+		return
+	}
+
+	money, err := getMoney()
+	if err != nil {
+		c.JSON(500, gin.H{
+			"success": false,
+		})
+		return
+	}
+
 	c.JSON(200, gin.H{
 		"success": true,
 		"advice":  advice,
+		"good":    good,
+		"bad":     bad,
+		"loveLv":  loveLv,
+		"slogon":  slogon,
+		"pos":     pos,
+		"money":   money,
 	})
 }

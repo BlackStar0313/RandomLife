@@ -10,35 +10,35 @@
 		</e:Group>
 		<e:Group top="199" left="160" right="160" bottom="440">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0x334caf"/>
-			<e:Label id="lbResult" text="Label" verticalCenter="0" textColor="0x000000" size="40" y="339" scaleX="1" scaleY="1" anchorOffsetX="0" horizontalCenter="0" width="317" textAlign="center" bold="true"/>
+			<e:Label id="lbResult" text="Label" verticalCenter="0" size="40" y="339" scaleX="1" scaleY="1" anchorOffsetX="0" horizontalCenter="0" width="317" textAlign="center" bold="true" strokeColor="0x000000" stroke="2" textColor="0xffffff"/>
 		</e:Group>
 		<e:Group top="199" left="0" right="480" bottom="440">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xfc97f6"/>
 			<e:Rect height="68" anchorOffsetY="0" left="0" right="0" top="0" fillColor="0x43ad4b"/>
 			<e:Label text="宜" y="19" textColor="0xba2323" bold="true" horizontalCenter="0"/>
-			<e:Label text="Label" horizontalCenter="0" width="132" verticalCenter="-15" textAlign="center"/>
+			<e:Label id="lbGood" text="Label" horizontalCenter="0" width="132" verticalCenter="-15" textAlign="center"/>
 		</e:Group>
 		<e:Group top="199" right="0" left="480" bottom="440">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xfc97f6"/>
 			<e:Rect height="68" left="0" right="0" anchorOffsetY="0" top="0" fillColor="0x931616"/>
 			<e:Label text="不宜" y="19" horizontalCenter="0" textColor="0x53911a" bold="true"/>
-			<e:Label text="Label" horizontalCenter="0" verticalCenter="-15" width="132" textAlign="center"/>
+			<e:Label id="lbBad" text="Label" horizontalCenter="0" verticalCenter="-15" width="132" textAlign="center"/>
 		</e:Group>
 		<e:Group width="639" bottom="326" height="113.66" anchorOffsetY="0" x="0" anchorOffsetX="0">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xf7ebda"/>
-			<e:Label text="Label" textColor="0xff3f3f" verticalCenter="0" x="15"/>
+			<e:Label id="lbSlogon" text="Label" textColor="0xff3f3f" verticalCenter="0" x="15"/>
 		</e:Group>
 		<e:Group width="639" bottom="212" height="113.66" anchorOffsetY="0" x="0" anchorOffsetX="0">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xF7EBDA"/>
-			<e:Label text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
+			<e:Label id="lbPos" text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
 		</e:Group>
 		<e:Group width="639" bottom="99" height="113.66" anchorOffsetY="0" x="0" anchorOffsetX="0">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xF7EBDA"/>
-			<e:Label text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
+			<e:Label id="lbLove" text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
 		</e:Group>
 		<e:Group width="639" bottom="0" height="98.99" anchorOffsetY="0" x="0" anchorOffsetX="0">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xF7EBDA"/>
-			<e:Label text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
+			<e:Label id="lbMoney" text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
 		</e:Group>
 		<e:Image id="btnClose" source="on_png" x="497.36" anchorOffsetX="0" width="121.85" anchorOffsetY="0" height="65.25" bottom="20"/>
 	</e:Group>
