@@ -1,5 +1,7 @@
 class StartView extends eui.Component implements eui.UIComponent {
     public btnStart: eui.Button;
+    public lbSlogon: eui.Label;
+
 
     public constructor() {
         super();
@@ -13,6 +15,8 @@ class StartView extends eui.Component implements eui.UIComponent {
         this.btnStart.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
             this.request();
         }, this);
+        this.lbSlogon.text = "生活\n10%是创造的\n90%是接纳的";
+        this.lbSlogon.lineSpacing = 20;
     }
 
 

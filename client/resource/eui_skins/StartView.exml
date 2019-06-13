@@ -4,6 +4,6 @@
 	<e:Group left="0" right="0" top="0" bottom="0">
 		<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xba3939"/>
 		<e:Button id="btnStart" label="今日运势" y="666" horizontalCenter="0" anchorOffsetX="0" width="121" anchorOffsetY="0" height="76"/>
-		<e:Label text="10%的生活是创造的\n90%的生活是接纳的" y="360" horizontalCenter="0" size="60"/>
+		<e:Label id="lbSlogon" text="10%的生活是创造的\n90%的生活是接纳的" y="360" horizontalCenter="0" size="60" textAlign="center" verticalAlign="middle" bold="true"/>
 	</e:Group>
 </e:Skin>

@@ -21,7 +21,7 @@ gulp.task('serve', gulp.series('build', (cb) => {
     }
     browserSync.init(options);
 
-    gulp.watch('./client/src/**/*.ts', callBrowserSync)
+    gulp.watch('./client/src/**/*.ts',gulp.series('build' , callBrowserSync) )
     gulp.watch('./client/resource/eui_skins/*.exml', callBrowserSync);
 }));
 
