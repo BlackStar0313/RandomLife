@@ -23,7 +23,7 @@
 		<e:Group top="235" right="0" left="480" bottom="440">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xfc97f6"/>
 			<e:Rect height="68" left="0" right="0" anchorOffsetY="0" top="0" fillColor="0x931616"/>
-			<e:Label text="不宜" y="19" horizontalCenter="0" textColor="0x53911a" bold="true"/>
+			<e:Label text="忌" y="19" horizontalCenter="0" textColor="0x53911a" bold="true"/>
 			<e:Label id="lbBad" text="Label" horizontalCenter="0" verticalCenter="23" width="132" textAlign="center" textColor="0x896427"/>
 		</e:Group>
 		<e:Group width="639" bottom="326" height="113.66" anchorOffsetY="0" x="0" anchorOffsetX="0">
