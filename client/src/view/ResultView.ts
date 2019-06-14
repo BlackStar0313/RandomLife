@@ -36,9 +36,11 @@ class ResultView extends eui.Component implements eui.UIComponent {
             this.lbResult.text = this.data.advice;
             this.lbLove.text = `桃花运:\t${this.data.loveLv}`;
             this.lbPos.text = `最佳方位:\t${this.data.pos}`;
-            this.lbSlogon.text = `今日slogon:\t${this.data.slogon}`;
+            this.lbSlogon.text = `slogon:\t${this.data.slogon}`;
             this.lbMoney.text = `财运:\t${this.data.money}`;
             this.handleGoodBad();
+            LocalHelper.setData(JSON.stringify(this.data));
+            LocalHelper.updateRandomTimestamp();
         }
         else {
             this.lbResult.text = "error!!!"

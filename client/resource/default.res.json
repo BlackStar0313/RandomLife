@@ -140,6 +140,11 @@
 			"url": "assets/animals.png",
 			"type": "image",
 			"name": "animals_png"
+		},
+		{
+			"url": "assets/new.png",
+			"type": "image",
+			"name": "new_png"
 		}
 	]
 }

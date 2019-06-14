@@ -3,7 +3,9 @@
 	<w:Config id="16ada655f0c" ></w:Config>
 	<e:Group left="0" right="0" top="0" bottom="0">
 		<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xba3939"/>
-		<e:Button id="btnStart" label="今日运势" y="666" horizontalCenter="0" anchorOffsetX="0" width="121" anchorOffsetY="0" height="76"/>
-		<e:Label id="lbSlogon" text="10%的生活是创造的\n90%的生活是接纳的" y="360" horizontalCenter="0" size="60" textAlign="center" verticalAlign="middle" bold="true"/>
+		<e:Button id="btnStart" label="今日运势" horizontalCenter="0" anchorOffsetX="0" width="197" anchorOffsetY="0" height="96" verticalCenter="136"/>
+		<e:Label id="lbSlogon" text="10%的生活是创造的\n90%的生活是接纳的" horizontalCenter="0" size="60" textAlign="center" verticalAlign="middle" bold="true" verticalCenter="-148"/>
+		<e:Image id="imgNew" source="new_png" rotation="21.31" horizontalCenter="88.5" verticalCenter="96" touchEnabled="false" scaleX="1.5" scaleY="1.5"/>
+		<e:Label id="lbTips" text="Label" bottom="76" horizontalCenter="0"/>
 	</e:Group>
 </e:Skin>
