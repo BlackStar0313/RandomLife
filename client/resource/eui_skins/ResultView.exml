@@ -7,6 +7,8 @@
 			<e:Label id="lbDate" text="年月日" horizontalCenter="0" size="40" verticalCenter="34.06" textAlign="center" verticalAlign="middle"/>
 			<e:Image source="animals_png" y="66.55" left="20"/>
 			<e:Image source="animals_png" y="66.55" right="20" skewY="180"/>
+			<e:Image id="btnChange" source="on_png" x="6" anchorOffsetX="0" width="121.85" anchorOffsetY="0" height="65.25" y="7"/>
+			<e:Label text="改命" x="36.93" y="24.63" touchEnabled="false"/>
 		</e:Group>
 		<e:Group top="235" left="160" right="160" bottom="440">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0x334caf"/>

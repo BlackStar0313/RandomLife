@@ -11,6 +11,7 @@ interface resultData {
 
 class ResultView extends eui.Component implements eui.UIComponent {
     public lbDate: eui.Label;
+    public btnChange: eui.Image;
     public lbResult: eui.Label;
     public lbGood: eui.Label;
     public lbBad: eui.Label;
@@ -23,7 +24,7 @@ class ResultView extends eui.Component implements eui.UIComponent {
 
     private data: resultData;
 
-    public constructor(data) {
+    public constructor(data, private change: () => void) {
         super();
         this.data = data;
         this.width = StageUtils.stageWidth;
@@ -55,8 +56,12 @@ class ResultView extends eui.Component implements eui.UIComponent {
         this.lbDate.text = `${year}年\n${month}月${day}号`;
         this.lbDate.lineSpacing = 20;
 
-        this.btnClose.addEventListener(egret.TouchEvent.TOUCH_END, () => {
+        this.btnClose.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
             this.parent.removeChild(this);
+        }, this);
+        this.btnChange.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+            this.parent.removeChild(this);
+            this.change();
         }, this);
     }
 
