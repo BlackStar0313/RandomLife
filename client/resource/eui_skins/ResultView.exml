@@ -35,8 +35,13 @@
 			<e:Label id="lbPos" text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
 		</e:Group>
 		<e:Group width="639" bottom="99" height="113.66" anchorOffsetY="0" x="0" anchorOffsetX="0">
-			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xF7EBDA"/>
+			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0x63afe8"/>
 			<e:Label id="lbLove" text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
+			<e:Group id="groupLove" width="360" height="65" anchorOffsetY="0" anchorOffsetX="0" left="172" verticalCenter="-0.3299999999999983">
+				<e:layout>
+					<e:HorizontalLayout gap="8" horizontalAlign="left" verticalAlign="middle"/>
+				</e:layout>
+			</e:Group>
 		</e:Group>
 		<e:Group width="639" bottom="0" height="98.99" anchorOffsetY="0" x="0" anchorOffsetX="0">
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xd8a154"/>

@@ -145,6 +145,16 @@
 			"url": "assets/new.png",
 			"type": "image",
 			"name": "new_png"
+		},
+		{
+			"url": "assets/star_empty.png",
+			"type": "image",
+			"name": "star_empty_png"
+		},
+		{
+			"url": "assets/star.png",
+			"type": "image",
+			"name": "star_png"
 		}
 	]
 }

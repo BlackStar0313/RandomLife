@@ -18,6 +18,7 @@ class ResultView extends eui.Component implements eui.UIComponent {
     public lbSlogon: eui.Label;
     public lbPos: eui.Label;
     public lbLove: eui.Label;
+    public groupLove: eui.Group;
     public lbMoney: eui.Label;
     public btnClose: eui.Image;
 
@@ -35,10 +36,11 @@ class ResultView extends eui.Component implements eui.UIComponent {
         super.childrenCreated();
         if (this.data.success) {
             this.lbResult.text = this.data.advice;
-            this.lbLove.text = `桃花运:\t${this.data.loveLv}`;
+            this.lbLove.text = `桃花运:`;
             this.lbPos.text = `最佳方位:\t${this.data.pos}`;
             this.lbSlogon.text = `slogon:\t${this.data.slogon}`;
             this.lbMoney.text = `财运:\t${this.data.money}`;
+            this.handleLove(this.data.loveLv);
             this.handleGoodBad();
             LocalHelper.setData(JSON.stringify(this.data));
             LocalHelper.updateRandomTimestamp();
@@ -79,6 +81,17 @@ class ResultView extends eui.Component implements eui.UIComponent {
         this.lbGood.lineSpacing = 15;
         this.lbBad.text = bad;
         this.lbBad.lineSpacing = 15;
+    }
+
+    private handleLove(level: number) {
+        let maxLv: number = 5;
+        for (let i = 0; i < maxLv; ++i) {
+            let img: eui.Image = new eui.Image();
+            img.source = i <= level ? "star_png" : "star_empty_png";
+            img.width = 65;
+            img.height = 65;
+            this.groupLove.addChild(img);
+        }
     }
 
 }
