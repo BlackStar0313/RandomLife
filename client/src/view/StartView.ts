@@ -38,7 +38,7 @@ class StartView extends eui.Component implements eui.UIComponent {
     }
 
     private request() {
-        PromiseUtils.requestGet("http://47.95.246.80:9091/api/getRandDesc").then((respData) => {
+        PromiseUtils.requestGet("https://randomlife.redpotato.cn/api/getRandDesc").then((respData) => {
             console.log("Request data is ", respData)
             this.parent.addChild(new ResultView(respData, this.request.bind(this)));
         });

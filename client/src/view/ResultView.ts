@@ -61,9 +61,12 @@ class ResultView extends eui.Component implements eui.UIComponent {
         this.btnClose.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
             this.parent.removeChild(this);
         }, this);
-        this.btnChange.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-            this.parent.removeChild(this);
-            this.change();
+        this.btnChange.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+            await WxHelper.ins().share("看看今天你的命怎么样", "share.png", "");
+            egret.setTimeout(() => {
+                this.parent.removeChild(this);
+                this.change();
+            }, this, 2000);
         }, this);
     }
 
