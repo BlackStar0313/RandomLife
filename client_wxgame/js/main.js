@@ -285,11 +285,16 @@ var MainScene = (function (_super) {
     __extends(MainScene, _super);
     function MainScene() {
         var _this = _super.call(this) || this;
+        _this.view = null;
         _this.width = StageUtils.stageWidth;
         _this.height = StageUtils.stageHeight;
-        _this.addChild(new StartView());
+        _this.view = new StartView(_this);
+        _this.addView();
         return _this;
     }
+    MainScene.prototype.addView = function () {
+        this.addChild(this.view);
+    };
     return MainScene;
 }(eui.UILayer));
 __reflect(MainScene.prototype, "MainScene");
@@ -594,9 +599,10 @@ var WxHelper = (function () {
 __reflect(WxHelper.prototype, "WxHelper");
 var ResultView = (function (_super) {
     __extends(ResultView, _super);
-    function ResultView(data, change) {
+    function ResultView(data, change, close) {
         var _this = _super.call(this) || this;
         _this.change = change;
+        _this.close = close;
         _this.data = data;
         _this.width = StageUtils.stageWidth;
         _this.height = StageUtils.stageHeight;
@@ -627,6 +633,7 @@ var ResultView = (function (_super) {
         this.lbDate.lineSpacing = 20;
         this.btnClose.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             _this.parent.removeChild(_this);
+            _this.close();
         }, this);
         this.btnChange.addEventListener(egret.TouchEvent.TOUCH_TAP, function () { return __awaiter(_this, void 0, void 0, function () {
             var _this = this;
@@ -673,10 +680,11 @@ var ResultView = (function (_super) {
 __reflect(ResultView.prototype, "ResultView", ["eui.UIComponent", "egret.DisplayObject"]);
 var StartView = (function (_super) {
     __extends(StartView, _super);
-    function StartView() {
+    function StartView(scene) {
         var _this = _super.call(this) || this;
         _this.width = StageUtils.stageWidth;
         _this.height = StageUtils.stageHeight;
+        _this.scene = scene;
         return _this;
     }
     StartView.prototype.childrenCreated = function () {
@@ -694,6 +702,7 @@ var StartView = (function (_super) {
     };
     StartView.prototype.addToStage = function () {
         this.imgNew.visible = this.isTimeNowNewDayUTC();
+        this.alpha = 1;
     };
     StartView.prototype.openResultView = function () {
         var data = LocalHelper.getData();
@@ -701,15 +710,19 @@ var StartView = (function (_super) {
             this.request();
         else {
             data = JSON.parse(data);
-            this.parent.addChild(new ResultView(data, this.request.bind(this)));
+            this.onShow(data);
         }
     };
     StartView.prototype.request = function () {
         var _this = this;
         PromiseUtils.requestGet("https://randomlife.redpotato.cn/api/getRandDesc").then(function (respData) {
             console.log("Request data is ", respData);
-            _this.parent.addChild(new ResultView(respData, _this.request.bind(_this)));
+            _this.onShow(respData);
         });
+    };
+    StartView.prototype.onShow = function (data) {
+        this.handleStartShader();
+        this.scene.addChildAt(new ResultView(data, this.request.bind(this), this.scene.addView.bind(this.scene)), 0);
     };
     StartView.prototype.isTimeNowNewDayUTC = function () {
         var timeBefore = LocalHelper.getRandomTimestamp();
@@ -759,6 +772,66 @@ var StartView = (function (_super) {
                 customFilter1.uniforms.customUniform = 0.0;
             }
         }, this);
+    };
+    StartView.prototype.handleStartShader = function () {
+        var _this = this;
+        var vertexSrc = "attribute vec2 aVertexPosition;\n" +
+            "attribute vec2 aTextureCoord;\n" +
+            "attribute vec2 aColor;\n" +
+            "uniform vec2 projectionVector;\n" +
+            "varying vec2 vTextureCoord;\n" +
+            "varying vec4 vColor;\n" +
+            "const vec2 center = vec2(-1.0, 1.0);\n" +
+            "void main(void) {\n" +
+            "   gl_Position = vec4( (aVertexPosition / projectionVector) + center , 0.0, 1.0);\n" +
+            "   vTextureCoord = aTextureCoord;\n" +
+            "   vColor = vec4(aColor.x, aColor.x, aColor.x, aColor.x);\n" +
+            "}";
+        var fragmentSrc1 = [
+            "precision lowp float;\n" +
+                "varying vec2 vTextureCoord;",
+            "varying vec4 vColor;\n",
+            "uniform sampler2D uSampler;",
+            "uniform vec2 center;",
+            "uniform vec3 params;",
+            "uniform float time;",
+            "void main()",
+            "{",
+            "vec2 uv = vTextureCoord.xy;",
+            "vec2 texCoord = uv;",
+            "float dist = distance(uv, center);",
+            "if ( (dist <= (time + params.z)) && (dist >= (time - params.z)) )",
+            "{",
+            "float diff = (dist - time);",
+            "float powDiff = 1.0 - pow(abs(diff*params.x), params.y);",
+            "float diffTime = diff  * powDiff;",
+            "vec2 diffUV = normalize(uv - center);",
+            "texCoord = uv + (diffUV * diffTime);",
+            "}",
+            "gl_FragColor = texture2D(uSampler, texCoord);",
+            "}"
+        ].join("\n");
+        var customFilter1 = new egret.CustomFilter(vertexSrc, fragmentSrc1, {
+            center: { x: 0.5, y: 0.5 },
+            params: { x: 10, y: 0.8, z: 0.1 },
+            time: 0
+        });
+        this.filters = [customFilter1];
+        var callback = function () {
+            customFilter1.uniforms.time += 0.01;
+            if (customFilter1.uniforms.time > 1) {
+                customFilter1.uniforms.time = 0.0;
+            }
+        };
+        this.addEventListener(egret.Event.ENTER_FRAME, callback, this);
+        var hideTime = 1000;
+        egret.Tween.get(this)
+            .to({ alpha: 0 }, hideTime)
+            .call(function () {
+            _this.filters = [];
+            _this.removeEventListener(egret.Event.ENTER_FRAME, callback, _this);
+            _this.parent.removeChild(_this);
+        });
     };
     return StartView;
 }(eui.Component));

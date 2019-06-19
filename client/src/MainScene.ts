@@ -1,9 +1,15 @@
 class MainScene extends eui.UILayer {
+    private view: StartView = null;
     public constructor() {
         super();
 
         this.width = StageUtils.stageWidth;
         this.height = StageUtils.stageHeight;
-        this.addChild(new StartView());
+        this.view = new StartView(this);
+        this.addView();
+    }
+
+    public addView() {
+        this.addChild(this.view);
     }
 }

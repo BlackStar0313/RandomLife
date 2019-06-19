@@ -25,7 +25,7 @@ class ResultView extends eui.Component implements eui.UIComponent {
 
     private data: resultData;
 
-    public constructor(data, private change: () => void) {
+    public constructor(data, private change: () => void, private close: () => void) {
         super();
         this.data = data;
         this.width = StageUtils.stageWidth;
@@ -60,6 +60,7 @@ class ResultView extends eui.Component implements eui.UIComponent {
 
         this.btnClose.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
             this.parent.removeChild(this);
+            this.close();
         }, this);
         this.btnChange.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
             await WxHelper.ins().share("看看今天你的命怎么样", "share.png", "");

@@ -5,10 +5,13 @@ class StartView extends eui.Component implements eui.UIComponent {
     public imgNew: eui.Image;
     public lbTips: eui.Label;
 
-    public constructor() {
+    private scene: MainScene;
+
+    public constructor(scene: MainScene) {
         super();
         this.width = StageUtils.stageWidth;
         this.height = StageUtils.stageHeight;
+        this.scene = scene;
     }
 
     protected childrenCreated(): void {
@@ -27,6 +30,7 @@ class StartView extends eui.Component implements eui.UIComponent {
 
     private addToStage() {
         this.imgNew.visible = this.isTimeNowNewDayUTC();
+        this.alpha = 1;
     }
 
     private openResultView() {
@@ -35,17 +39,21 @@ class StartView extends eui.Component implements eui.UIComponent {
             this.request();
         else {
             data = JSON.parse(data);
-            this.parent.addChild(new ResultView(data, this.request.bind(this)));
+            this.onShow(data);
         }
     }
 
     private request() {
         PromiseUtils.requestGet("https://randomlife.redpotato.cn/api/getRandDesc").then((respData) => {
             console.log("Request data is ", respData)
-            this.parent.addChild(new ResultView(respData, this.request.bind(this)));
+            this.onShow(respData);
         });
     }
 
+    private onShow(data) {
+        this.handleStartShader();
+        this.scene.addChildAt(new ResultView(data, this.request.bind(this), this.scene.addView.bind(this.scene)), 0);
+    }
 
 
     public isTimeNowNewDayUTC(): boolean {
@@ -115,4 +123,83 @@ class StartView extends eui.Component implements eui.UIComponent {
         }, this)
     }
 
+    private handleStartShader() {
+        let vertexSrc =
+            "attribute vec2 aVertexPosition;\n" +
+            "attribute vec2 aTextureCoord;\n" +
+            "attribute vec2 aColor;\n" +
+
+            "uniform vec2 projectionVector;\n" +
+
+            "varying vec2 vTextureCoord;\n" +
+            "varying vec4 vColor;\n" +
+
+            "const vec2 center = vec2(-1.0, 1.0);\n" +
+
+            "void main(void) {\n" +
+            "   gl_Position = vec4( (aVertexPosition / projectionVector) + center , 0.0, 1.0);\n" +
+            "   vTextureCoord = aTextureCoord;\n" +
+            "   vColor = vec4(aColor.x, aColor.x, aColor.x, aColor.x);\n" +
+            "}";
+
+        let fragmentSrc1 = [
+            "precision lowp float;\n" +
+            "varying vec2 vTextureCoord;",
+            "varying vec4 vColor;\n",
+            "uniform sampler2D uSampler;",
+
+            "uniform vec2 center;",
+            "uniform vec3 params;", // 10.0, 0.8, 0.1"
+            "uniform float time;",
+
+            "void main()",
+            "{",
+            "vec2 uv = vTextureCoord.xy;",
+            "vec2 texCoord = uv;",
+
+            "float dist = distance(uv, center);",
+
+            "if ( (dist <= (time + params.z)) && (dist >= (time - params.z)) )",
+            "{",
+            "float diff = (dist - time);",
+            "float powDiff = 1.0 - pow(abs(diff*params.x), params.y);",
+
+            "float diffTime = diff  * powDiff;",
+            "vec2 diffUV = normalize(uv - center);",
+            "texCoord = uv + (diffUV * diffTime);",
+            "}",
+
+            "gl_FragColor = texture2D(uSampler, texCoord);",
+            "}"
+        ].join("\n");
+
+        let customFilter1 = new egret.CustomFilter(
+            vertexSrc,
+            fragmentSrc1,
+            {
+                center: { x: 0.5, y: 0.5 },
+                params: { x: 10, y: 0.8, z: 0.1 },
+                time: 0
+            }
+        );
+
+        this.filters = [customFilter1];
+
+        let callback = () => {
+            customFilter1.uniforms.time += 0.01;
+            if (customFilter1.uniforms.time > 1) {
+                customFilter1.uniforms.time = 0.0;
+            }
+        }
+        this.addEventListener(egret.Event.ENTER_FRAME, callback, this);
+
+        let hideTime: number = 1000;
+        egret.Tween.get(this)
+            .to({ alpha: 0 }, hideTime)
+            .call(() => {
+                this.filters = [];
+                this.removeEventListener(egret.Event.ENTER_FRAME, callback, this);
+                this.parent.removeChild(this);
+            });
+    }
 }
