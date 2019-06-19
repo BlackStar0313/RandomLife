@@ -199,7 +199,9 @@ class StartView extends eui.Component implements eui.UIComponent {
             .call(() => {
                 this.filters = [];
                 this.removeEventListener(egret.Event.ENTER_FRAME, callback, this);
-                this.parent.removeChild(this);
+                if (this.parent) {
+                    this.parent.removeChild(this);
+                }
             });
     }
 }

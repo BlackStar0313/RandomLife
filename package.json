@@ -17,11 +17,13 @@
   },
   "homepage": "https://github.com/BlackStar0313/RandomLife#readme",
   "dependencies": {
-    "del": "^4.1.1"
+    "del": "^4.1.1",
+    "yargs": "^13.2.4"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
+    "gulp-path": "^4.0.0",
     "gulp-shell": "^0.7.1"
   }
 }

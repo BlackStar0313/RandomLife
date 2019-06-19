@@ -830,7 +830,9 @@ var StartView = (function (_super) {
             .call(function () {
             _this.filters = [];
             _this.removeEventListener(egret.Event.ENTER_FRAME, callback, _this);
-            _this.parent.removeChild(_this);
+            if (_this.parent) {
+                _this.parent.removeChild(_this);
+            }
         });
     };
     return StartView;

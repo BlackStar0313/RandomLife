@@ -7,7 +7,7 @@
 			<e:Label id="lbDate" text="年月日" horizontalCenter="0" size="40" verticalCenter="34.06" textAlign="center" verticalAlign="middle"/>
 			<e:Image source="animals_png" y="66.55" left="20"/>
 			<e:Image source="animals_png" y="66.55" right="20" skewY="180"/>
-			<e:Image id="btnChange" source="on_png" x="6" anchorOffsetX="0" width="121.85" anchorOffsetY="0" height="65.25" y="7"/>
+			<e:Image id="btnChange" source="on_png" anchorOffsetX="0" width="81.85" anchorOffsetY="0" height="45.25" scale9Grid="25,12,14,2" horizontalCenter="-253" verticalCenter="-78.44"/>
 			<e:Label text="改命" x="36.93" y="24.63" touchEnabled="false"/>
 		</e:Group>
 		<e:Group top="235" left="160" right="160" bottom="440">
@@ -47,6 +47,6 @@
 			<e:Rect left="0" right="0" top="0" bottom="0" fillColor="0xd8a154"/>
 			<e:Label id="lbMoney" text="Label" textColor="0xFF3F3F" verticalCenter="0" x="15"/>
 		</e:Group>
-		<e:Image id="btnClose" source="on_png" x="497.36" anchorOffsetX="0" width="121.85" anchorOffsetY="0" height="65.25" bottom="20"/>
+		<e:Image id="btnClose" x="516.6" anchorOffsetX="0" anchorOffsetY="0" source="back_png" scaleX="0.6" scaleY="0.6" bottom="14"/>
 	</e:Group>
 </e:Skin>
