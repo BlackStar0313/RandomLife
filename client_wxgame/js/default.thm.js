@@ -820,7 +820,7 @@ var egret = window.egret;window.skins={};
 	__extends(StartViewSkin, _super);
 	function StartViewSkin() {
 		_super.call(this);
-		this.skinParts = ["btnStart","lbSlogon","imgNew","lbTips"];
+		this.skinParts = ["rectBg","btnStart","lbSlogon","imgNew","lbTips"];
 		
 		this.height = 1136;
 		this.width = 640;
@@ -834,13 +834,14 @@ var egret = window.egret;window.skins={};
 		t.left = 0;
 		t.right = 0;
 		t.top = 0;
-		t.elementsContent = [this._Rect1_i(),this.btnStart_i(),this.lbSlogon_i(),this.imgNew_i(),this.lbTips_i()];
+		t.elementsContent = [this.rectBg_i(),this.btnStart_i(),this.lbSlogon_i(),this.imgNew_i(),this.lbTips_i()];
 		return t;
 	};
-	_proto._Rect1_i = function () {
+	_proto.rectBg_i = function () {
 		var t = new eui.Rect();
+		this.rectBg = t;
 		t.bottom = 0;
-		t.fillColor = 0xba3939;
+		t.fillColor = 0xdd1f1f;
 		t.left = 0;
 		t.right = 0;
 		t.top = 0;

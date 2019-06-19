@@ -9,15 +9,16 @@
 		"libs/modules/game/game.js"
 	],
 	"game": [
-		"bin-debug/PromiseUtils.js",
+		"bin-debug/StageUtils.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/Main.js",
 		"bin-debug/MainScene.js",
 		"bin-debug/Platform.js",
+		"bin-debug/PromiseUtils.js",
 		"bin-debug/LoadingUI.js",
-		"bin-debug/StageUtils.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/helper/LocalHelper.js",
+		"bin-debug/helper/WxHelper.js",
 		"bin-debug/view/ResultView.js",
 		"bin-debug/view/StartView.js"
 	]
